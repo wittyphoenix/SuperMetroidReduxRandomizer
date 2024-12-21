@@ -24,7 +24,9 @@ namespace SuperMetroidRandomizer.Rom
     public class Location
     {
         public string Name { get; set; }
+        public string ItemID { get; set; }
         public long Address { get; set; }
+        public long MapAddress { get; set; }
         public ItemStorageType ItemStorageType { get; set; }
         public Access CanAccess { get; set; }
         public Item Item { get; set; }
