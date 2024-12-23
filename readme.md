@@ -1,9 +1,11 @@
-# Current Version: 21 ([download](https://github.com/Dessyreqt/smrandomizer/releases/tag/v21))
+# About Super Metroid Redux Randomizer
+This is modified version of the Super Metroid Randomizer found here: https://github.com/Dessyreqt/smrandomizer
+This version is designed for compatibility with Super Metroid Redux. 
 
-# About Super Metroid Randomizer
-This is a simple program that moves around items in Super Metroid. It is used for racing the game.
-
-When racing the game, it is suggested that each player play the same seed to ensure a level playing field.
+New features include:
+* An input file selector to grab your preferred Redux ROM.
+* An IPS patch to be applied on top of Redux for compatibility
+* Logic in the randomizer to make the map item dots from Redux work with the hidden / reduced items options
 
 # Using the Randomizer
 When you start the program, you will see there are two tabs, one for "Current Randomizer" and one for "Old Randomizer". "Old Randomizer" is just for the people who have been playing randomizer for a while and really miss the old days.
