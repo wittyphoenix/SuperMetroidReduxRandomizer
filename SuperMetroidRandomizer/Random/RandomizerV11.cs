@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Threading;
 using SuperMetroidRandomizer.IO;
 using SuperMetroidRandomizer.Net;
@@ -27,6 +28,7 @@ namespace SuperMetroidRandomizer.Random
         private readonly int seed;
         private readonly IRomLocations romLocations;
         private RandomizerLog log;
+        private string inputfile;
         private List<string> HiddenItems = new List<string>();
         private List<string> UnusedItems = new List<string>();
         private List<string> NormalItems = new List<string>();
@@ -34,15 +36,17 @@ namespace SuperMetroidRandomizer.Random
         private string[] LastDupe = { "x0A", "x13", "x25", "x3E", "x8D", "x91" };
         private string[] LastDupeEsc = { "\x0A", "\x13", "\x25", "\x3E", "\x8D", "\x91" };
         private long[] DupeAddress = { 0x17cd6, 0x17d18, 0x17290, 0x17e3a, 0x17f26, 0x17f3e};
+        private byte[] RomImage;
         
-      
 
-        public RandomizerV11(int seed, IRomLocations romLocations, RandomizerLog log)
+
+        public RandomizerV11(int seed, IRomLocations romLocations, RandomizerLog log, string inputfile)
         {
             random = new SeedRandom(seed);
             this.romLocations = romLocations;
             this.seed = seed;
             this.log = log;
+            this.inputfile = inputfile;
         }
         
         public string CreateRom(string filename, bool spoilerOnly = false)
@@ -73,9 +77,11 @@ namespace SuperMetroidRandomizer.Random
             if (Settings.Default.UseCustomSettings && !Settings.Default.CustomHiddenItems)
                 hideLocations = false;
 
+            RomImage = File.ReadAllBytes(inputfile);
+
             using (var rom = new FileStream(usedFilename, FileMode.OpenOrCreate))
             {
-                rom.Write(Resources.RomImage, 0, 3145728);
+                rom.Write(RomImage, 0, 3145728);
 
                 foreach (var location in romLocations.Locations)
                 {
