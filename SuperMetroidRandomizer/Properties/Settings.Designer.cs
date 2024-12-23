@@ -46,7 +46,22 @@ namespace SuperMetroidRandomizer.Properties {
                 this["OutputFileV11"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string inputfile
+        {
+            get
+            {
+                return ((string)(this["inputfile"]));
+            }
+            set
+            {
+                this["inputfile"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("X")]

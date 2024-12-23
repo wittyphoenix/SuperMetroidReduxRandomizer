@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -10,6 +11,8 @@ using SuperMetroidRandomizer.Net;
 using SuperMetroidRandomizer.Properties;
 using SuperMetroidRandomizer.Random;
 using SuperMetroidRandomizer.Rom;
+
+
 
 namespace SuperMetroidRandomizer
 {
@@ -23,6 +26,8 @@ namespace SuperMetroidRandomizer
     public partial class MainForm : Form
     {
         private Thread checkUpdateThread;
+        
+        internal static byte[] RomImage;
 
         public MainForm()
         {
@@ -30,6 +35,7 @@ namespace SuperMetroidRandomizer
             InitializeComponent();
         }
 
+   
         private void InitializeSettings()
         {
             Settings.Default.OutputFile = Settings.Default.OutputFile;
@@ -43,6 +49,7 @@ namespace SuperMetroidRandomizer
             Settings.Default.ControlsAngleDown = Settings.Default.ControlsAngleDown;
             Settings.Default.RandomizerDifficulty = Settings.Default.RandomizerDifficulty;
             Settings.Default.CreateSpoilerLog = Settings.Default.CreateSpoilerLog;
+            Settings.Default.inputfile= Settings.Default.inputfile;
         }
 
         private void RunCheckUpdate()
@@ -112,8 +119,9 @@ namespace SuperMetroidRandomizer
         {
             outputFilename.Text = Settings.Default.OutputFile;
             filenameV11.Text = Settings.Default.OutputFileV11;
+            inputfile.Text = Settings.Default.inputfile;
             createSpoilerLog.Checked = Settings.Default.CreateSpoilerLog;
-            Text = string.Format("Super Metroid Redux Randomizer v{0}", RandomizerVersion.CurrentDisplay);
+            Text = string.Format("Super Metroid Redux Randomizer", RandomizerVersion.CurrentDisplay);
             if (Settings.Default.UseCustomSettings)
                 randomizerDifficulty.SelectedItem = "Custom";
             else
@@ -141,6 +149,7 @@ namespace SuperMetroidRandomizer
 
             Settings.Default.CreateSpoilerLog = createSpoilerLog.Checked;
             Settings.Default.RandomizerDifficulty = randomizerDifficulty.SelectedItem.ToString();
+            Settings.Default.inputfile = inputfile.Text;
             Settings.Default.Save();
         }
 
@@ -163,7 +172,7 @@ namespace SuperMetroidRandomizer
                 }
 
                 seedV11.Text = string.Format(romLocations.SeedFileString, parsedSeed);
-                var randomizerV11 = new RandomizerV11(parsedSeed, romLocations, log);
+                var randomizerV11 = new RandomizerV11(parsedSeed, romLocations, log, inputfile.Text);
                 randomizerV11.CreateRom(filenameV11.Text);
 
                 var outputString = new StringBuilder();
@@ -192,7 +201,7 @@ namespace SuperMetroidRandomizer
 
                 seedV11.Text = string.Format(romPlms.SeedFileString, parsedSeed);
 
-                var randomizer = new RandomizerV11(parsedSeed, romPlms, log);
+                var randomizer = new RandomizerV11(parsedSeed, romPlms, log, inputfile.Text);
                 WriteOutputV11(randomizer.CreateRom(filenameV11.Text, true));
             }
         }
@@ -380,6 +389,27 @@ namespace SuperMetroidRandomizer
 
             if (Settings.Default.UseCustomSettings)
                 randomizerDifficulty.SelectedItem = "Custom";
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+               // var info = new FileInfo(inputfile.Text);
+                var FileDialog = new OpenFileDialog { Filter = "All files (*.*)|*.*", FilterIndex = 2, RestoreDirectory = true };//, InitialDirectory = info.DirectoryName, FileName = info.Name };
+
+                if (FileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    inputfile.Text = FileDialog.FileName;
+                }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
