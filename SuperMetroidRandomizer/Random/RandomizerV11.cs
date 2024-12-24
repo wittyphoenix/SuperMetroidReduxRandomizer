@@ -140,6 +140,8 @@ namespace SuperMetroidRandomizer.Random
                         // we have 4 copies of charge to reduce tedium, give them all the same index
                         rom.Seek(location.Address + 4, SeekOrigin.Begin);
                         rom.Write(StringToByteArray("\xff"), 0, 1);
+                        rom.Seek(location.MapAddress, SeekOrigin.Begin);
+                        rom.Write(StringToByteArray("\xff"), 0, 1);
                     }
                 }
                 int cnt = 0;

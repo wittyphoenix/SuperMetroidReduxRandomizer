@@ -145,7 +145,7 @@ namespace SuperMetroidRandomizer
                 return;
             }
 
-            if (!inputfile.Text.Contains(".sfc".ToUpper()) && !inputfile.Text.Contains(".smc".ToUpper()))
+            if (!inputfile.Text.ToUpper().Contains(".sfc".ToUpper()) && !inputfile.Text.Contains(".smc".ToUpper()))
             {
                 MessageBox.Show("Must provide a valid Super Metroid Redux ROM as input.", "Input File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
