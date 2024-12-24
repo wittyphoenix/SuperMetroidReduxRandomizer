@@ -82,7 +82,7 @@ namespace SuperMetroidRandomizer.Random
             using (var rom = new FileStream(usedFilename, FileMode.OpenOrCreate))
             {
                 rom.Write(RomImage, 0, 3145728);
-
+                decimal useditems = 0;
                 foreach (var location in romLocations.Locations)
                 {
                     rom.Seek(location.Address, SeekOrigin.Begin);
@@ -127,6 +127,10 @@ namespace SuperMetroidRandomizer.Random
                         NormalItems.Remove(location.ItemID);
                         HiddenItems.Remove(location.ItemID);
                     }
+                    else
+                    {
+                        useditems += 1;
+                    }
                     
                     //assign blank icon to map to maintain secret
                     if (location.Item.Type == ItemType.Nothing || location.ItemStorageType == ItemStorageType.Hidden)
@@ -144,6 +148,12 @@ namespace SuperMetroidRandomizer.Random
                         rom.Write(StringToByteArray("\xff"), 0, 1);
                     }
                 }
+
+                //write total items for % calc
+                rom.Seek(0x17a92, SeekOrigin.Begin);
+                byte[] useditemsarray = { decimal.ToByte(useditems) };
+                rom.Write(useditemsarray, 0, 1);
+
                 int cnt = 0;
                 foreach (var dupe in FirstDupe)
                 {
