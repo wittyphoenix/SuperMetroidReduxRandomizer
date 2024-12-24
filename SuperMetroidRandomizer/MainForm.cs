@@ -145,12 +145,19 @@ namespace SuperMetroidRandomizer
                 return;
             }
 
-            CreateRom(difficulty);
+            if (!inputfile.Text.Contains(".sfc") && !inputfile.Text.Contains(".smc"))
+            {
+                MessageBox.Show("Must provide a valid Super Metroid Redux ROM as input.", "Input File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CreateRom(difficulty);
 
-            Settings.Default.CreateSpoilerLog = createSpoilerLog.Checked;
-            Settings.Default.RandomizerDifficulty = randomizerDifficulty.SelectedItem.ToString();
-            Settings.Default.inputfile = inputfile.Text;
-            Settings.Default.Save();
+                Settings.Default.CreateSpoilerLog = createSpoilerLog.Checked;
+                Settings.Default.RandomizerDifficulty = randomizerDifficulty.SelectedItem.ToString();
+                Settings.Default.inputfile = inputfile.Text;
+                Settings.Default.Save();
+            }
         }
 
         private void CreateRom(RandomizerDifficulty difficulty)
