@@ -58,7 +58,6 @@ namespace SuperMetroidRandomizer.Random
 
             GenerateItemList();
             GenerateItemPositions();
-            WriteRom(filename);
 
             if (spoilerOnly)
             {
