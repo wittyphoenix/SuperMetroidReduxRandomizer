@@ -35,7 +35,7 @@ namespace SuperMetroidRandomizer.Random
         private string[] FirstDupe = {"x09", "x12", "x24", "x3D", "x8C", "x90" };
         private string[] LastDupe = { "x0A", "x13", "x25", "x3E", "x8D", "x91" };
         private string[] LastDupeEsc = { "\x0A", "\x13", "\x25", "\x3E", "\x8D", "\x91" };
-        private long[] DupeAddress = { 0x17cd6, 0x17d18, 0x17290, 0x17e3a, 0x17f26, 0x17f3e};
+        private long[] DupeAddress = { 0x17cd6, 0x17d18, 0x17d90, 0x17e3a, 0x17f26, 0x17f3e};
         private byte[] RomImage;
         
 
