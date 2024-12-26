@@ -152,6 +152,8 @@ namespace SuperMetroidRandomizer.Random
                 rom.Seek(0x17a92, SeekOrigin.Begin);
                 byte[] useditemsarray = { decimal.ToByte(useditems) };
                 rom.Write(useditemsarray, 0, 1);
+                rom.Seek(0x5e651, SeekOrigin.Begin);
+                rom.Write(useditemsarray, 0, 1);
 
                 int cnt = 0;
                 foreach (var dupe in FirstDupe)
