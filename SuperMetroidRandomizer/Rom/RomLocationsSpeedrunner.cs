@@ -792,6 +792,7 @@ namespace SuperMetroidRandomizer.Rom
                                    Name = "Reserve Tank (Norfair)",
                                    Address = 0x78C3E,
                                    MapAddress = 0x17e3a,
+                                   ItemID = "x3d",
                                    ItemStorageType = ItemStorageType.Chozo,
                                    CanAccess =
                                        have =>
@@ -809,6 +810,7 @@ namespace SuperMetroidRandomizer.Rom
                                    Name = "Missile (Norfair Reserve Tank)",
                                    Address = 0x78C44,
                                    MapAddress = 0x17e3a,
+                                   ItemID = "x3e",
                                    ItemStorageType = ItemStorageType.Hidden,
                                    CanAccess =
                                        have =>
