@@ -82,6 +82,7 @@ namespace SuperMetroidRandomizer.Random
             {
                 rom.Write(RomImage, 0, 3145728);
                 decimal useditems = 0;
+                decimal chargeitems = 0;
                 foreach (var location in romLocations.Locations)
                 {
                     rom.Seek(location.Address, SeekOrigin.Begin);
@@ -145,8 +146,12 @@ namespace SuperMetroidRandomizer.Random
                         rom.Write(StringToByteArray("\xff"), 0, 1);
                         rom.Seek(location.MapAddress, SeekOrigin.Begin);
                         rom.Write(StringToByteArray("\xff"), 0, 1);
+                        chargeitems += 1;
                     }
                 }
+
+                //remove extra charge beams from the item count
+                useditems = useditems - (chargeitems - 1);
 
                 //write total items for % calc
                 rom.Seek(0x17a92, SeekOrigin.Begin);
