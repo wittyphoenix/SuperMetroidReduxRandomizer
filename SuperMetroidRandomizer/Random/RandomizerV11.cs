@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Threading;
+using System.Windows.Forms;
 using SuperMetroidRandomizer.IO;
 using SuperMetroidRandomizer.Net;
 using SuperMetroidRandomizer.Properties;
@@ -75,8 +77,14 @@ namespace SuperMetroidRandomizer.Random
             var hideLocations = !(romLocations is RomLocationsCasual);
             if (Settings.Default.UseCustomSettings && !Settings.Default.CustomHiddenItems)
                 hideLocations = false;
-
-            RomImage = File.ReadAllBytes(inputfile);
+            try
+            {
+                RomImage = File.ReadAllBytes(inputfile);
+            }
+            catch {
+                MessageBox.Show("Invalid input file.","File Read Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
 
             using (var rom = new FileStream(usedFilename, FileMode.OpenOrCreate))
             {

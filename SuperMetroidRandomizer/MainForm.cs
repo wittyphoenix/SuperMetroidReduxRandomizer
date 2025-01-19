@@ -136,6 +136,8 @@ namespace SuperMetroidRandomizer
                 SetSeedBasedOnDifficulty();
             }
 
+         
+
             ClearOutputV11();
             
             var difficulty = GetRandomizerDifficulty();
@@ -162,6 +164,7 @@ namespace SuperMetroidRandomizer
 
         private void CreateRom(RandomizerDifficulty difficulty)
         {
+
             int parsedSeed;
             if (!int.TryParse(seedV11.Text, out parsedSeed))
             {
@@ -189,6 +192,14 @@ namespace SuperMetroidRandomizer
                 outputString.AppendFormat(" ({0} Difficulty){1}{1}", romLocations.DifficultyName, Environment.NewLine);
 
                 WriteOutputV11(outputString.ToString());
+
+                string SaveFile = filenameV11.Text.Substring(0, filenameV11.Text.Length - 3) + "srm";
+                if (File.Exists(SaveFile))
+                {
+                    File.Delete(SaveFile);
+                }
+                    
+                    
             }
         }
 
