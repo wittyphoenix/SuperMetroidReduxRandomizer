@@ -12,8 +12,12 @@ namespace SuperMetroidRandomizer
         [STAThread]
         static void Main(string[] args)
         {
+            string difficulty = args[0];
+            string inputfile = args[1];
+            string outputfile = args[2];
+
             var MainFunction = new MainFunction();
-            MainFunction.CreateRom("Speedrunner", "C:\\Users\\sjmcg\\OneDrive\\Documents\\Metroid\\Randomizer\\Input\\Dedux Rando Compatible.sfc", "Y:\\snes\\Super Metroid Dedux Rando.sfc");
+            MainFunction.CreateRom(difficulty, inputfile, outputfile);
             
         }
 

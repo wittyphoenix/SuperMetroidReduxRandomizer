@@ -38,8 +38,6 @@ namespace SuperMetroidRandomizer
                 {
                     File.Delete(SaveFile);
                 }
-
-
             }
         }
         private string SetSeedBasedOnDifficulty(RandomizerDifficulty difficulty)
