@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using SuperMetroidRandomizer.Net;
 using SuperMetroidRandomizer.Rom;
 
 namespace SuperMetroidRandomizer.IO
@@ -45,7 +44,6 @@ namespace SuperMetroidRandomizer.IO
 
             writer.AppendLine("Super Metroid Randomizer Log");
             writer.AppendLine("----------------------------");
-            writer.AppendLine(string.Format("Version: {0}", RandomizerVersion.CurrentDisplay));
             writer.AppendLine(string.Format("Creation Date: {0}", DateTime.Now));
             writer.AppendLine(string.Format("Seed: {0}", seed));
             writer.AppendLine();

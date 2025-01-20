@@ -59,25 +59,5 @@ namespace SuperMetroidRandomizer.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MenuFileSaveIcon {
-            get {
-                object obj = ResourceManager.GetObject("MenuFileSaveIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] RomImage {
-            get {
-                object obj = ResourceManager.GetObject("RomImage", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

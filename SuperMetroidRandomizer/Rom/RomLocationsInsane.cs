@@ -11,7 +11,7 @@ namespace SuperMetroidRandomizer.Rom
         public List<Location> Locations { get; set; }
         public string DifficultyName { get { return "Insane"; } }
         public string SeedFileString { get { return "I{0:0000000}"; } }
-        public string SeedRomString { get { return "SMRv{0} I{1}"; } }
+        public string SeedRomString { get { return "SMR I{0}"; } }
 
         public void ResetLocations()
         {

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Resources;
 using System.Threading;
 using SuperMetroidRandomizer.IO;
-using SuperMetroidRandomizer.Net;
 using SuperMetroidRandomizer.Properties;
 using SuperMetroidRandomizer.Rom;
 
@@ -266,7 +265,7 @@ namespace SuperMetroidRandomizer.Random
 
         private void WriteSeedInRom(FileStream rom)
         {
-            string seedStr = string.Format(romLocations.SeedRomString, RandomizerVersion.Current, seed.ToString().PadLeft(7, '0')).PadRight(21).Substring(0, 21);
+            string seedStr = string.Format(romLocations.SeedRomString, seed.ToString().PadLeft(7, '0')).PadRight(21).Substring(0, 21);
             rom.Seek(0x7fc0, SeekOrigin.Begin);
             rom.Write(StringToByteArray(seedStr), 0, 21);
         }
