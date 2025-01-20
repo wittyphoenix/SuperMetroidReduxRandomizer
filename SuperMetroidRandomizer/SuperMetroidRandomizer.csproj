@@ -74,6 +74,7 @@
       <DependentUpon>Customize.cs</DependentUpon>
     </Compile>
     <Compile Include="IO\FileName.cs" />
+    <Compile Include="MainFunction.cs" />
     <Compile Include="Net\RandomizerVersion.cs" />
     <Compile Include="Rom\Controller.cs" />
     <Compile Include="Controls.cs">
