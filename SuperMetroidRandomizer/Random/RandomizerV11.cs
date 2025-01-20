@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Threading;
-using System.Windows.Forms;
 using SuperMetroidRandomizer.IO;
 using SuperMetroidRandomizer.Net;
 using SuperMetroidRandomizer.Properties;
@@ -82,7 +81,6 @@ namespace SuperMetroidRandomizer.Random
                 RomImage = File.ReadAllBytes(inputfile);
             }
             catch {
-                MessageBox.Show("Invalid input file.","File Read Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
 
